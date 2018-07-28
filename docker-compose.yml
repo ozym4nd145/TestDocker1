@@ -2,13 +2,16 @@ version: '3'
 services:
   web:
     build: ./folder
+    # build: https://www.github.com/ozym4nd145/TestDocker1.git#:folder
     ports:
      - "4000:5000"
-    image: "devclubiitd/test1:0.1"
+    image: "devclubiitd/test1:${TAG:-0.1}"
     depends_on:
       - redis
     env_file:
       - ./test.env
+    environment:
+      - DEBUG # Take DEBUG variable from environment
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 1m30s
@@ -28,10 +31,10 @@ services:
         target: /source
         read_only: true
     logging:
-			options:
-				max-size: '12m'
-				max-file: '5'
-			driver: json-file
+      options:
+        max-size: '12m'
+        max-file: '5'
+      driver: json-file
   redis:
     image: "redis:alpine"
 restart: unless-stopped
