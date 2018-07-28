@@ -4,5 +4,6 @@ services:
     build: .
     ports:
      - "5000:5000"
+    image: "devclubiitd/test1:0.1"
   redis:
     image: "redis:alpine"
