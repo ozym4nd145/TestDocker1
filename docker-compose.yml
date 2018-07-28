@@ -27,6 +27,11 @@ services:
         source: ./folder
         target: /source
         read_only: true
+    logging:
+			options:
+				max-size: '12m'
+				max-file: '5'
+			driver: json-file
   redis:
     image: "redis:alpine"
 restart: unless-stopped
