@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
   web:
     build: ./folder
@@ -35,9 +35,10 @@ services:
         max-size: '12m'
         max-file: '5'
       driver: json-file
+    restart: unless-stopped
   redis:
     image: "redis:alpine"
-restart: unless-stopped
+    restart: unless-stopped
 volumes:
     mydata:
       labels:
