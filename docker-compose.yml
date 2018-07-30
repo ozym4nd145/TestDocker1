@@ -4,8 +4,8 @@ services:
     build: ./folder
     # build: https://www.github.com/ozym4nd145/TestDocker1.git#:folder
     ports:
-     - "4000:5000"
-    image: "devclubiitd/test1:${TAG:-0.1}"
+     - "40000:5000"
+    image: "devclubiitd/test1:${TAG:-0.2}"
     depends_on:
       - redis
     env_file:
@@ -13,7 +13,7 @@ services:
     environment:
       - DEBUG # Take DEBUG variable from environment
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD", "curl", "-f", "http://localhost:5000"]
       interval: 1m30s
       timeout: 10s
       retries: 3
@@ -26,10 +26,10 @@ services:
         target: /data
         volume:
           nocopy: true
-      - type: bind
-        source: ./folder
-        target: /source
-        read_only: true
+      # - type: bind
+      #   source: ./folder
+      #   target: /source
+      #   read_only: true
     logging:
       options:
         max-size: '12m'
