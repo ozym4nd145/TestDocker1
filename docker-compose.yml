@@ -5,7 +5,7 @@ services:
     # build: https://www.github.com/ozym4nd145/TestDocker1.git#:folder
     ports:
      - "40000:5000"
-    image: "devclubiitd/test1:${TAG:-0.3}"
+    image: "devclubiitd/test1:${TAG:-0.4}"
     depends_on:
       - redis
     env_file:
@@ -36,9 +36,11 @@ services:
         max-file: '5'
       driver: json-file
     restart: unless-stopped
+    network_mode: bridge
   redis:
     image: "redis:alpine"
     restart: unless-stopped
+    network_mode: bridge
 volumes:
     mydata:
       labels:
