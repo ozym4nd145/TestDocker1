@@ -4,7 +4,7 @@ services:
     build: ./folder
     # build: https://www.github.com/ozym4nd145/TestDocker1.git#:folder
     ports:
-     - "40000:5000"
+     - "5000"
     image: "devclubiitd/test1:${TAG:-0.4}"
     depends_on:
       - redis
