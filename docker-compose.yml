@@ -36,11 +36,9 @@ services:
         max-file: '5'
       driver: json-file
     restart: unless-stopped
-    network_mode: bridge
   redis:
     image: "redis:alpine"
     restart: unless-stopped
-    network_mode: bridge
 volumes:
     mydata:
       labels:
